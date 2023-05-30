@@ -1,6 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const dotenv = require('dotenv');
 
-module.exports = nextConfig
+// Runs configuration from .env file
+dotenv.config();
+
+// Allows us to access environment variables in our code
+// Exports our API key from out environment securely
+module.exports = {
+  publicRuntimeConfig: {
+    apiKey: process.env.API_KEY,
+  },
+};
