@@ -10,3 +10,40 @@
   color: rgb(92, 30, 150);
   height: 100vh;
  }
+
+ h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  opacity: .6;
+  text-shadow: 1px 1px white;
+ }
+
+ .app-input {
+  width: 35%;
+  height: 10rem;
+  opacity: .5;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  resize: none;
+  box-shadow: 2px 2px 5px rgb(122, 122, 122);
+ }
+
+ button {
+  padding: 1rem 2rem;
+  background-color: lightskyblue;
+  color: white;
+  border: 2px solid rgb(33, 182, 255);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all .1s ease-in-out;
+ }
+
+ button:hover {
+  background-color: lightgreen;
+  border: 2px solid lightgreen;
+ }
