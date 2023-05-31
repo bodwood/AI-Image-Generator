@@ -8,6 +8,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const [input, setInput] = useState('');
   const [result, setResult] = useState('./images/placeholder.png')
+  const [loading, setLoading] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const text: string = 'Creating Your Image...';
   
 
   // Grabs the API key from the .env file
@@ -23,15 +26,38 @@ export default function App({ Component, pageProps }: AppProps) {
   const openai = new OpenAIApi(configuration)
   //
   const generateImage = async () => {
+    setLoading(true);
     const res = await openai.createImage({
       prompt: input,
       n:1,
-      size:"1024x1024"
+      size:"256x256"
   })
+    setLoading(false);
     const data = res.data;
     console.log(data);
     setResult(data.data[0].url || 'image not found');
   }
+
+  // this will run whenever loading is set to true
+  useEffect(() => {
+    if(loading)
+    {
+      let i = 0;
+      // Slices the text to the current index and sets it to the typedText state
+      // This runs every 500ms
+      // Clears the interval once loading is set to false
+      const interval = setInterval(() => {
+        setTypedText(text.slice(0,i));
+        i++;
+        if(i > text.length + 1)
+        {
+          i = 0;
+          setTypedText('');
+        }
+      }, 150)
+      return () => clearInterval(interval);
+    }
+  }, [loading])
 
   return (
     <div className='app-main'>
@@ -42,8 +68,13 @@ export default function App({ Component, pageProps }: AppProps) {
         onChange={(e) => setInput(e.target.value)}
       />
       <button onClick={generateImage}>Generate Image</button>
-      <>
-        <img className='placeholder-image' src={result} alt='Generated Image' />
+      <> {loading ? (
+      <> 
+      <h3>{typedText}</h3>
+      </>
+      ) 
+      : <img className='placeholder-image' src={result} alt='Generated Image' />
+      }
       </>
     </div>
   );
