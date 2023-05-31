@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import { Configuration, OpenAIApi } from 'openai';
 import getConfig from 'next/config';
 import '../pages/App.css'
+import 'tailwindcss/tailwind.css';
+
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -27,15 +29,15 @@ export default function App({ Component, pageProps }: AppProps) {
   //
   const generateImage = async () => {
     setLoading(true);
-    const res = await openai.createImage({
-      prompt: input,
-      n:1,
-      size:"256x256"
-  })
-    setLoading(false);
-    const data = res.data;
-    console.log(data);
-    setResult(data.data[0].url || 'image not found');
+  //   const res = await openai.createImage({
+  //     prompt: input,
+  //     n:1,
+  //     size:"256x256"
+  // })
+    // setLoading(false);
+    // const data = res.data;
+    // console.log(data);
+    // setResult(data.data[0].url || 'image not found');
   }
 
   // this will run whenever loading is set to true
@@ -67,15 +69,26 @@ export default function App({ Component, pageProps }: AppProps) {
         placeholder='Create any type of image you can think of with as much added description as you would like.'
         onChange={(e) => setInput(e.target.value)}
       />
-      <button onClick={generateImage}>Generate Image</button>
+
       <> {loading ? (
-      <> 
-      <h3>{typedText}</h3>
+        <> 
+      <button onClick={generateImage} type="button" className="" disabled>
+        Generate Image
+        </button>
+      <h3 className="h-10">{typedText}</h3>
+      <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
       </>
       ) 
-      : <img className='placeholder-image' src={result} alt='Generated Image' />
+      : 
+      <>
+      <button onClick={generateImage} className="mt-3 mb-3" >Generate Image</button>
+      <img className='placeholder-image' src={result} alt='Generated Image' />
+      </>
       }
       </>
     </div>
+
   );
 }
