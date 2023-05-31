@@ -6,7 +6,9 @@ import '../pages/App.css'
 
 export default function App({ Component, pageProps }: AppProps) {
 
+  const [input, setInput] = useState('');
   const [result, setResult] = useState('./images/placeholder.png')
+  
 
   // Grabs the API key from the .env file
   const { publicRuntimeConfig } = getConfig();
@@ -22,12 +24,13 @@ export default function App({ Component, pageProps }: AppProps) {
   //
   const generateImage = async () => {
     const res = await openai.createImage({
-      prompt:"a white siamese cat",
+      prompt: input,
       n:1,
       size:"1024x1024"
   })
     const data = res.data;
     console.log(data);
+    setResult(data.data[0].url || 'image not found');
   }
 
   return (
@@ -36,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <textarea
         className='app-input'
         placeholder='Create any type of image you can think of with as much added description as you would like.'
+        onChange={(e) => setInput(e.target.value)}
       />
       <button onClick={generateImage}>Generate Image</button>
       <>
