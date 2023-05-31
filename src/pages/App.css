@@ -47,3 +47,11 @@
   background-color: lightgreen;
   border: 2px solid lightgreen;
  }
+
+ .placeholder-image {
+  width: 35%;
+  height: 1024px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgb(122, 122, 122);
+ }
