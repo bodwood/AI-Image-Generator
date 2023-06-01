@@ -5,7 +5,7 @@
 ## Technologies Used
 
 ## Wireframe
- 
+![wireframe](https://github.com/bodwood/AI-Image-Generator/blob/main/public/images/OpenAiWireFrame.png?raw=true)
 
 ## Getting Started
 
