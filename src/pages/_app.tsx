@@ -69,7 +69,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div className='app-main bg-cover bg-background-image-ai-app'>
-      <h2 className='text-custom-white text-xl mt-2'>AI Image Generator</h2>
+      <h2 className='text-custom-white text-4xl mt-4 mb-4'>AI Image Generator</h2>
       <textarea
         className='app-input'
         placeholder='Create any type of image you can think of with as much added description as you would like.'
@@ -81,8 +81,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <button onClick={generateImage} type="button" className="cursor-progress" disabled>
         Generate Image
         </button>
-      <h3 className="h-10">{typedText}</h3>
-      <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+      <h3 className="h-10 text-custom-white text-3xl mt-2">{typedText}</h3>
+      <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] " role="status">
         <span className="sr-only">Loading...</span>
       </div>
       </>
