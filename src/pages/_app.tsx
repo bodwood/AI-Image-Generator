@@ -29,15 +29,15 @@ export default function App({ Component, pageProps }: AppProps) {
   //
   const generateImage = async () => {
     setLoading(true);
-  //   const res = await openai.createImage({
-  //     prompt: input,
-  //     n:1,
-  //     size:"256x256"
-  // })
-    // setLoading(false);
-    // const data = res.data;
-    // console.log(data);
-    // setResult(data.data[0].url || 'image not found');
+    const res = await openai.createImage({
+      prompt: input,
+      n:1,
+      size:"256x256"
+  })
+    setLoading(false);
+    const data = res.data;
+    console.log(data);
+    setResult(data.data[0].url || 'image not found');
   }
 
   // this will run whenever loading is set to true
