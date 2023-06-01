@@ -59,7 +59,13 @@ export default function App({ Component, pageProps }: AppProps) {
       }, 150)
       return () => clearInterval(interval);
     }
-  }, [loading])
+  }, [loading]);
+
+  const sendEmail = (url = "") => {
+    url = result;
+    const message = `Here's your generated image: ${url}`;
+    window.location.href = `mailto:enteremailhere@example.com?subject=AI Generated Image&body=${message}`;
+  }
 
   return (
     <div className='app-main'>
@@ -72,7 +78,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <> {loading ? (
         <> 
-      <button onClick={generateImage} type="button" className="" disabled>
+      <button onClick={generateImage} type="button" className="cursor-progress" disabled>
         Generate Image
         </button>
       <h3 className="h-10">{typedText}</h3>
@@ -84,7 +90,7 @@ export default function App({ Component, pageProps }: AppProps) {
       : 
       <>
       <button onClick={generateImage} className="mt-3 mb-3" >Generate Image</button>
-      <img className='placeholder-image' src={result} alt='Generated Image' />
+      <img className='placeholder-image' src={result} alt='Generated Image' onClick={() => sendEmail(result)} />
       </>
       }
       </>
