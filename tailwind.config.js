@@ -8,11 +8,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'background-image-ai-app': "url('/images/background-image-ai-app.jpeg')",
       },
+    },
+    colors: {
+      'bara-red': '#EC4E6E',
+      'custom-white': '#FFFFFF',
     },
   },
   plugins: [],
-}
+};

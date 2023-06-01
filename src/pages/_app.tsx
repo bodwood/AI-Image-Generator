@@ -68,8 +68,8 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <div className='app-main'>
-      <h2>Create Images With Your Mind</h2>
+    <div className='app-main bg-cover bg-background-image-ai-app'>
+      <h2 className='text-custom-white text-xl mt-2'>AI Image Generator</h2>
       <textarea
         className='app-input'
         placeholder='Create any type of image you can think of with as much added description as you would like.'
@@ -89,7 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
       ) 
       : 
       <>
-      <button onClick={generateImage} className="mt-3 mb-3" >Generate Image</button>
+      <button onClick={generateImage} className="mt-3 mb-3 bg-bara-red p-2" >Generate Image</button>
       <img className='placeholder-image' src={result} alt='Generated Image' onClick={() => sendEmail(result)} />
       </>
       }
